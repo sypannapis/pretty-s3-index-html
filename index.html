@@ -117,8 +117,8 @@
 	    self.key = key;
 
 	    // init logic
-	    self.isFolder = FOLDER_PATTERN.test(self.key);
-	    self.filename = self.isFolder ? self.key.replace(FOLDER_PATTERN,'') : self.key;
+	    self.isFolder = self.key.substr(-1) == "/";
+	    self.filename = self.isFolder ? self.key.substr(0,self.key.length-1) : self.key;
 	    self.url = bucketUrl + '/' + self.key;
 	    self.levels = self.filename.split('/');
 	    self.numLevels = self.levels.length;
